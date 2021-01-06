@@ -2,14 +2,22 @@
 <html lang="en-GB">
 <head>
     <meta charset="UTF-8">
-    <title>Coucou</title>
+    <title>Notification API</title>
 </head>
 <body>
-<h1>Take back control</h1>
+<h1>Notification API</h1>
+<p>This tries to be the simplest, most concise example on how to display a notification.</p>
 </body>
 <script>
-    let myName = 'title'
     // https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API
-    new Notification(`My name is ${myName}`, {body: '👋'});
+    Notification.requestPermission((status) => {
+        if (status === 'granted') {
+            let displayedNotification = new Notification('You have been notified', {
+                body: 'This will happen every time this page is loaded.',
+                icon: 'https://avatars3.githubusercontent.com/u/71024224?s=460&u=df4e8dae8630611a570cc7de1aa6ed899fa7a2a4&v=4'
+            });
+            displayedNotification.addEventListener('show', (_) => console.log("Notification has been shown."))
+        }
+    });
 </script>
 </html>
