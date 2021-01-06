@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Notification API</h1>
-<p>This tries to be the simplest, most concise example on how to display a notification.</p>
+<p>This tries to be the simplest, most concise example on how to display a notification on desktop as well as on mobile.</p>
 </body>
 <script>
     Notification.requestPermission()
@@ -14,7 +14,9 @@
             if (permisssion === 'granted') {
                 navigator.serviceWorker.ready;
             }
+        // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification
         }).then(() => navigator.serviceWorker.register('service-worker.js'))
+        // https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API
         .then(registration => registration.showNotification('👋 My very own notification.', {
             body: 'There are a lot like them, but this one is mine.',
             icon: 'https://avatars3.githubusercontent.com/u/71024224?s=460&u=df4e8dae8630611a570cc7de1aa6ed899fa7a2a4&v=4',
